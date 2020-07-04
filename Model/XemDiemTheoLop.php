@@ -1,10 +1,19 @@
+<style>
+	select{
+		margin-left: 600;
+	}
+	table{
+    margin-left:600px;
+    }
+
+</style>
 <?php
 include_once("DataProvider.php");
 $sql_lop = "SELECT MaLop, TenLop FROM Lop";
 $dsSinhVien = DataProvider::ExecuteQuery($sql_lop);
 ?>
-<h2>DANH SÁCH</h2>
-Lớp:
+<h1 style="text-align: center;">DANH SÁCH</h1>
+<h2 style="text-align: center;">Lớp</h2>
 <form>
     <select name="Lop" id="Lop">
         <?php
@@ -20,8 +29,8 @@ Lớp:
 <table>
 	<tr>
 		<th>STT</th>
-		<th>Điểm</th>
 		<th>Tên Sinh Viên</th>
+		<th>Điểm</th>
 	</tr>
 
 <?php
@@ -37,12 +46,12 @@ Lớp:
         $chuoi = <<< EOD
         <tr>
             <td>{$i}</td>
-            <td>{$HoTen}</td>
-            <td>{$MonHoc}</td>
-            <td>{$Diem}</td>
+            <td>{$row["HoTen"]}</td>
+            <td>{$row["TenMon"]}</td>
+            <td>{$row["Diem"]}</td>
         </tr>
 EOD;
-        echo $chuoi, $i;
+        echo $chuoi, $i++;
     }    
 ?>
 
