@@ -1,51 +1,43 @@
-<div class="table">
-	<div class="thead">
-		<div class="tr">
-			<div class="td">One</div>
-			<div class="td">Two</div>
-			<div class="td">Three</div>
-			<div class="td">Four</div>
-			<div class="td"></div>
-		</div>
-	</div>
-	<div class="tbody">
-		<form class="tr">
-			<div class="td">1</div>
-			<div class="td">2</div>
-			<div class="td">3</div>
-			<div class="td">4567890123456</div>
-			<div class="td action"><button type="button" onclick="edit(this);">edit</button></div>
-		</form>
-		<form class="tr">
-			<div class="td">1</div>
-			<div class="td">2</div>
-			<div class="td">3</div>
-			<div class="td">4</div>
-			<div class="td action"><button type="button" onclick="edit(this);">edit</button></div>
-		</form>
-		<form class="tr">
-			<div class="td">1</div>
-			<div class="td">234567890123456</div>
-			<div class="td">3</div>
-			<div class="td">4</div>
-			<div class="td action"><button type="button" onclick="edit(this);">edit</button></div>
-		</form>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
-		<form class="tr">
-			<div class="td">1</div>
-			<div class="td">2</div>
-			<div class="td">34567</div>
-			<div class="td">4</div>
-			<div class="td action"><button type="button" onclick="edit(this);">edit</button></div>
-		</form>
-		<form class="tr">
-			<div class="td">1234</div>
-			<div class="td">2</div>
-			<div class="td">3</div>
-			<div class="td">4</div>
-			<div class="td action"><button type="button" onclick="edit(this);">edit</button></div>
-		</form>
-    </div>
+<div>
+	<select id="selects">
+		<option value="khoa" selected>Khoa</option>
+		<option value="lop">Lớp</option>
+		<option value="sinhvien">Sinh Viên</option>
+		<option value="monhoc" >Môn học</option>
+	</select>
+</div>
+
+<script>
+	$(document).ready(function(){
+		$.ajax({
+				url:"filter.php",
+				type:"POST",
+				data: {value:"khoa"},
+				success: function(res){
+				$(".table").html(res)
+				}
+			})
+		$('#selects').change(function(){
+			var val = $("#selects").val();
+			console.log(val)
+			$.ajax({
+				url:"filter.php",
+				type:"POST",
+				data: {value:val},
+				success: function(res){
+				$(".table").html(res)
+				}
+			})
+		})
+	})
+
+</script>
+
+<div class="table">
+	
+	
     <div class="d"></div>
 </div>
 <style>
@@ -81,7 +73,7 @@
 	width:100px;
 }
 </style>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
 <script>
    
 function edit(element){
@@ -121,7 +113,7 @@ function edit(element){
         type:"POST",
         data: {arr:arr},
         success: function(res){
-          $(".d").html(res)
+          //$(".d").html(res)
         }
        
         })
