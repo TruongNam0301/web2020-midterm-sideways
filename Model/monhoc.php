@@ -1,5 +1,5 @@
 <?php
-    include ("DataProvider.php");
+    //include ("DataProvider.php");
     class monhoc{
         //hien thi ds monhoc
         public static function show(){

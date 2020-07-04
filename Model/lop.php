@@ -1,5 +1,5 @@
 <?php
-    include ("DataProvider.php");
+    //include ("DataProvider.php");
     class lop{
         //hien thi ds lop
         public static function show(){
