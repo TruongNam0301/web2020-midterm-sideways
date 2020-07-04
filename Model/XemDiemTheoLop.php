@@ -5,6 +5,10 @@
 	table{
     margin-left:600px;
     }
+    tr td{
+        margin: 20px;
+        padding:20px;
+    }
 
 </style>
 <?php
@@ -29,7 +33,8 @@ $dsSinhVien = DataProvider::ExecuteQuery($sql_lop);
 <table>
 	<tr>
 		<th>STT</th>
-		<th>Tên Sinh Viên</th>
+        <th>Tên Sinh Viên</th>
+        <th>Môn</th>
 		<th>Điểm</th>
 	</tr>
 
