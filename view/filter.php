@@ -1,7 +1,9 @@
 <?php
     include("../Model/DataProvider.php");
+   
     $check=$_POST['value'];
     if(!isset($_POST['value'])||$check=='khoa'){
+       
         $sql="SELECT * FROM khoa";
         $khoa= DataProvider::executeQuery($sql);
         echo  $str="<div class='thead'>
@@ -11,8 +13,8 @@
          </div>
         </div>
         <div class='tbody'>";
-        function table ($TenKhoa,$Nam){
-            $str="<form class='tr'>
+        function table ($id,$TenKhoa,$Nam){
+            $str="<form class='tr ' data-id=$id>
 			<div class='td'>$TenKhoa</div>
 			<div class='td'>$Nam</div>
 			<div class='td action'><button type='button' onclick='edit(this);'>edit</button></div>
@@ -20,7 +22,7 @@
         echo $str;
         };
         while($row=mysqli_fetch_array($khoa)){
-            table ($row['TenKhoa'] , $row['NamThanhLap']);
+            table ($row['MaKhoa'],$row['TenKhoa'] , $row['NamThanhLap']);
         }
         echo "</div>";
     }
